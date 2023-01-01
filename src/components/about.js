@@ -35,6 +35,14 @@ export default class about extends Component {
             skills:[...this.state.skills,skill]
         })
     }
+    onDelete=(skill)=>{
+        let index=this.state.skills.indexOf(skill)
+        let listSkills=[...this.state.skills]
+        listSkills.splice(index,1)
+        this.setState({
+            skills:listSkills
+        })
+    }
   render() {
     return (
       <div>
@@ -75,7 +83,10 @@ export default class about extends Component {
     {
         this.state.skills.map((skill,index)=>
         <tr>
-        <td>{skill.id}</td> <td>{skill.skill}</td>
+        <td>{skill.id}</td> <td>{skill.skill}</td> 
+        <td>      
+            <button className='btn btn-danger' onClick={()=>this.onDelete(skill)}>X</button>
+</td>
     </tr>
         )
     }
