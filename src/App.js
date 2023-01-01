@@ -1,6 +1,7 @@
 import './App.css';
 import Counter from "./components/counter";
 import About from "./components/about";
+import Gallery from "./components/gallery";
 import {Route,Routes ,Link,BrowserRouter as Router} from 'react-router-dom'
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
       <Routes>
     <Route exact path='/'></Route>
     <Route exact path='/about' element={< About />}></Route>
-    <Route exact path='/counter' element={< Counter />}></Route>
+    <Route exact path='/counter' element={< Counter image="images/mysql.png"/>}></Route>
+    <Route exact path='/gallery' element={< Gallery />}></Route>
 </Routes>
    </div>
     </Router>

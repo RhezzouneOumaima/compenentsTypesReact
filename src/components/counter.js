@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
+
 export default class counter extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +25,7 @@ export default class counter extends Component {
       <div className='card m-3'>
         <div className='card-header'>
           <strong>
-            {this.props.title} :  {this.state.counter}
+            {this.props.title?this.props.title:"Default title"} :  {this.state.counter}
           </strong>
         </div>
         <div className='ml-auto'>
