@@ -1,12 +1,37 @@
 import './App.css';
 import Counter from "./components/counter";
+import About from "./components/about";
+import {Route,Routes ,Link,BrowserRouter as Router} from 'react-router-dom'
 
 function App() {
   return (
-   <div className='m-3'>
-    <Counter title="Laravel" value={1} image="images/profile.png"/>
-    <Counter title="MySQL" value={1} image="images/mysql.png"/>
+    <Router>
+      <nav className='navbar navbar-expand'>
+        <ul className='navbar-nav'>
+          <li>
+          <Link className='nav-link' to="/">Home</Link>
+          </li>
+          <li>
+          <Link className='nav-link' to="/counter">Counter</Link>
+          </li>
+          <li>
+          <Link className='nav-link' to="/about">About</Link>
+          </li>
+          <li>
+          <Link className='nav-link' to="/gallery">Gallery</Link>
+          </li>
+        </ul>
+        
+      </nav>
+      <div className='container'>
+      <Routes>
+    <Route exact path='/'></Route>
+    <Route exact path='/about' element={< About />}></Route>
+    <Route exact path='/counter' element={< Counter />}></Route>
+</Routes>
    </div>
+    </Router>
+ 
   );
 }
 
