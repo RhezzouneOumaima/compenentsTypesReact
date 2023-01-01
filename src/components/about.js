@@ -9,6 +9,7 @@ export default class about extends Component {
     {
         super(props)
       this.state={
+        skillValue:"",
         title:"Infos",
         contact:{name:"rhezzoune oumaima",mail:"ouma.rhezzoune@gmail.com",profile:'images/ouma.png'},
         skills:[
@@ -17,6 +18,22 @@ export default class about extends Component {
             {id:3,skill:"Back end"},
         ]
       }
+    }
+    setSkill=(event)=>{
+        this.setState({
+            skillValue:event.target.value
+        })
+
+    }
+    addSkill=(event)=>{
+        event.preventDefault();//for not refresh the browser after onsubmit
+        let skill={
+            id:[...this.state.skills].pop().id+1,
+            skill:this.state.skillValue
+        }
+        this.setState({
+            skills:[...this.state.skills,skill]
+        })
     }
   render() {
     return (
@@ -38,8 +55,19 @@ export default class about extends Component {
         </div>
 
         <div className='card m-2'>
-<div className='card-header'>Skills</div>
+<div className='card-header'>Skills : {this.state.skillValue}</div>
 <div className='card-body'>
+    <form onSubmit={this.addSkill}>
+        <div className='row'>
+            <div className='col'>
+                <input type="text" name='skill' value={this.state.skillValue} onChange={this.setSkill} placeholder='new skill'/>
+            </div>
+            <div className='col col-auto'>
+                <button className='btn btn-primary' type='submit'>ADD</button>
+            </div>
+        </div>
+
+    </form>
 <table className='table'>
     <tr>
         <th>ID</th> <th>Skill</th>
